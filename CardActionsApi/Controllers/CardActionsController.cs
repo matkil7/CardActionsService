@@ -1,4 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
+using CardActionsApi.Services.Actions;
 using Microsoft.AspNetCore.Mvc;
+using Results;
 
 namespace CardActionsApi.Controllers;
 
@@ -6,13 +10,22 @@ namespace CardActionsApi.Controllers;
 [Route("[controller]")]
 public class CardActionsController : ControllerBase
 {
-    public CardActionsController()
+    private readonly IActionService _actionService;
+
+    public CardActionsController(IActionService actionService)
     {
+        _actionService = actionService;
     }
 
     [HttpGet(Name = "GetCardActions")]
-    public IEnumerable<string> Get()
+    
+    public async Task<IActionResult>  Get([Required] string userId, [Required]string cardNumber)
     {
-        return [];
+        var actions = await _actionService.GetCardActions(userId, cardNumber);
+        if (actions.IsSuccess)
+        {
+            return Ok(JsonSerializer.Serialize(actions.Value));
+        }
+        return NotFound();
     }
 }

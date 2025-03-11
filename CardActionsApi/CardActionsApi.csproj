@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Results\Results.csproj" />
       <ProjectReference Include="..\Specifications\Specifications.csproj" />
     </ItemGroup>
 

@@ -14,8 +14,4 @@
       <ProjectReference Include="..\Specifications\Specifications.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Providers\Actions\" />
-    </ItemGroup>
-
 </Project>

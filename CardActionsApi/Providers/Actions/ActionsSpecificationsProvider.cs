@@ -28,7 +28,7 @@ public class ActionsSpecificationsProvider : ISpecificationsProvider<CardDetails
             },
             {
                 6,
-                new ActionSpecificationBuilder().Rule(x => x.CardType == CardType.Credit).Rule(x =>
+                new ActionSpecificationBuilder().Rule(new IsAccessibleType()).Rule(x =>
                     x.IsPinSet && CardStatusHelper.OrderedInactiveActiveBlocked.Contains(x.CardStatus))
             },
             {

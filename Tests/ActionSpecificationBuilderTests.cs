@@ -91,8 +91,9 @@ public class ActionSpecificationBuilderTests
         {
             new object[]
             {
-                new ActionSpecificationBuilder().Rule(x => x.CardType == CardType.Credit).Rule(x =>
-                    x.IsPinSet && CardStatusHelper.OrderedInactiveActiveBlocked.Contains(x.CardStatus)),
+                new ActionSpecificationBuilder().Rule(new IsAccessibleType()).Rule(x =>
+                    x.IsPinSet && CardStatusHelper.OrderedInactiveActive.Contains(x.CardStatus) ||
+                    (x.IsPinSet && x.CardStatus == CardStatus.Blocked)),
                 PrepareCards([CardType.Credit, CardType.Debit, CardType.Prepaid],
                     [CardStatus.Ordered, CardStatus.Active, CardStatus.Blocked, CardStatus.Inactive], true),
                 PrepareCards([CardType.Credit, CardType.Debit, CardType.Prepaid],
@@ -129,7 +130,7 @@ public class ActionSpecificationBuilderTests
                 PrepareCards([CardType.Credit, CardType.Debit, CardType.Prepaid],
                     CardStatusHelper.OrderedInactiveActiveBlocked, false),
                 PrepareCards([CardType.Credit, CardType.Debit, CardType.Prepaid],
-                    [CardStatus.Restricted, CardStatus.Expired, CardStatus.Closed], false)
+                    [CardStatus.Restricted, ], false)
             }
         };
 

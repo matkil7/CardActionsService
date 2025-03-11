@@ -4,9 +4,9 @@ using Specifications.Builders;
 
 namespace Tests;
 
-public class SpecificationBuilderTestHelper
+public static class SpecificationBuilderTestHelper
 {
-    public void IsValid_NoRulesDefined_ReturnsTrue<T>() where T : class
+    public static void IsValid_NoRulesDefined_ReturnsTrue<T>() where T : class
     {
         // Arrange
         var builder = new SpecificationBuilderBase<T>();
@@ -17,7 +17,7 @@ public class SpecificationBuilderTestHelper
         Assert.True(result);
     }
 
-    public void IsValid_AllSpecificationsAndConditionsPass_ReturnsTrue<T>() where T : class
+    public static void IsValid_AllSpecificationsAndConditionsPass_ReturnsTrue<T>() where T : class
     {
         var mockSpec = new Mock<ISpecification<T>>();
         mockSpec.Setup(s => s.IsSatisfiedBy(It.IsAny<T>())).Returns(true);
@@ -33,7 +33,7 @@ public class SpecificationBuilderTestHelper
         Assert.True(result);
     }
 
-    public void IsValid_AnySpecificationFails_ReturnsFalse<T>() where T : class
+    public  static void IsValid_AnySpecificationFails_ReturnsFalse<T>() where T : class
     {
         var passingSpec = new Mock<ISpecification<T>>();
         passingSpec.Setup(s => s.IsSatisfiedBy(It.IsAny<T>())).Returns(true);
@@ -53,7 +53,7 @@ public class SpecificationBuilderTestHelper
         Assert.False(result);
     }
 
-    public void IsValid_AnyConditionFails_ReturnsFalse<T>() where T : class
+    public static void IsValid_AnyConditionFails_ReturnsFalse<T>() where T : class
     {
         var mockSpec = new Mock<ISpecification<T>>();
         mockSpec.Setup(s => s.IsSatisfiedBy(It.IsAny<T>())).Returns(true);
@@ -70,7 +70,7 @@ public class SpecificationBuilderTestHelper
         Assert.False(result);
     }
 
-    public void IsValid_MultipleSpecificationsAndConditionsPass_ReturnsTrue<T>() where T : class
+    public static void IsValid_MultipleSpecificationsAndConditionsPass_ReturnsTrue<T>() where T : class
     {
         // Arrange
         var spec1 = new Mock<ISpecification<T>>();

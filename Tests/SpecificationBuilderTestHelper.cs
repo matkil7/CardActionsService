@@ -4,7 +4,7 @@ using Specifications.Builders;
 
 namespace Tests;
 
-public class SpecificationBuilderTests
+public class SpecificationBuilderTestHelper
 {
     public void IsValid_NoRulesDefined_ReturnsTrue<T>() where T : class
     {

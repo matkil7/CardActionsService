@@ -22,6 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CardActionsApi\CardActionsApi.csproj" />
       <ProjectReference Include="..\Specifications\Specifications.csproj" />
     </ItemGroup>
 

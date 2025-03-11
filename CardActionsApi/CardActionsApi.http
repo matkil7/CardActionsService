@@ -1,0 +1,6 @@
+@CardActionsApi_HostAddress = http://localhost:5136
+
+GET {{CardActionsApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
